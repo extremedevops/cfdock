@@ -5,6 +5,8 @@ etcd/data/*
 !etcd/data/.gitkeep
 consul/data/*
 !consul/data/.gitkeep
+uaa/data/*
+!uaa/data/.gitkeep
 
 # virtualenv for docker-compose
 env/
