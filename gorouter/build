@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -ex
+
+go get github.com/tools/godep
+
+mkdir -p $GOPATH/src/github.com/cloudfoundry/
+
+cd $GOPATH/src/github.com/cloudfoundry/ && git clone --recursive https://github.com/cloudfoundry/gorouter.git
+
+cd $GOPATH/src/github.com/cloudfoundry/gorouter && godep restore
+
+go install github.com/cloudfoundry/gorouter

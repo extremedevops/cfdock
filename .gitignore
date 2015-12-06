@@ -1,0 +1,10 @@
+# Database information
+db/data/*
+!db/data/.gitkeep
+etcd/data/*
+!etcd/data/.gitkeep
+consul/data/*
+!consul/data/.gitkeep
+
+# virtualenv for docker-compose
+env/
