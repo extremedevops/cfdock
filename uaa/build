@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -ex
+
+# We use the version 225 of the cf release as reference
+
+git clone --recursive https://github.com/cloudfoundry/uaa.git /uaa
+cd /uaa && git checkout 79188ac && git submodule init && git submodule update
+
+cd /uaa && \
+  ./gradlew :cloudfoundry-identity-uaa:war &&
+  rm -rf $CATALINA_HOME/webapps/* &&
+  cp /uaa/uaa/build/libs/cloudfoundry-identity-uaa-*.war $CATALINA_HOME/webapps/ROOT.war
+
+cd /
+
+rm -rf /uaa
+
+rm -rf $HOME/.gradle
