@@ -24,4 +24,10 @@ consul:
   command: agent -server -bootstrap-expect 1 -data-dir /data
 
 gorouter:
-  build: gorouter/.
+  image: extremedevops/cfdock:gorouter
+  links:
+    - nats
+  volumes:
+    - "./gorouter/config.yml:/gorouter/config.yml"
+  ports:
+    - 8081
